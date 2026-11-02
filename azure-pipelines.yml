@@ -23,8 +23,10 @@ steps:
     goals: 'package'
 - task: CopyFiles@2
   inputs:
-    Contents: '**/.war'
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '**/*.war'
     TargetFolder: '$(build.artifactstagingdirectory)'
+    flattenFolders: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
